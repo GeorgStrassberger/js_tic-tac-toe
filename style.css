@@ -2,11 +2,12 @@ table {
     border-collapse: collapse;
 }
 
-table tr {
+tr {
     width: 399px;
 }
 
-table td {
+td {
+    position: relative;
     height: 133px;
     width: 133px;
     border: 5px solid black;
@@ -26,4 +27,16 @@ table tr td:first-child {
 
 table tr td:last-child {
     border-right: 0;
+}
+
+.shape {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+}
+
+.imgframe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
