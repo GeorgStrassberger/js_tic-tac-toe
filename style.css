@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 table {
@@ -61,4 +62,30 @@ table tr td:last-child {
 
 .d-none {
     display: none;
+}
+
+.players img {
+    height: 40px;
+    width: 40px;
+    margin-left: 8px;
+}
+
+.players span {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.players div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px;
+}
+
+.players {
+    margin: 32px;
+}
+
+.inavtive {
+    opacity: 0.3;
 }

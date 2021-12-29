@@ -1,24 +1,29 @@
 let fields = [];
 
-let currentShape = `cross`;
+let currentShape = `circle`;
 
 
 function fillShape(id) {
-    if (currentShape == 'cross') {
-        currentShape = 'circle';
-    } else {
-        currentShape = 'cross';
-    }
+    if (!fields[id]) {
+        if (currentShape == 'circle') {
+            currentShape = 'cross';
+            document.getElementById('player_1').classList.remove('inavtive');
+            document.getElementById('player_2').classList.add('inavtive');
+        } else {
+            currentShape = 'circle';
+            document.getElementById('player_1').classList.add('inavtive');
+            document.getElementById('player_2').classList.remove('inavtive');
+        }
 
-    fields[id] = currentShape;
-    console.log(fields);
-    draw();
-    checkForWin();
+        fields[id] = currentShape;
+        console.log(fields);
+        draw();
+        checkForWin();
+    }
 }
 
 function draw() {
     for (let i = 0; i < fields.length; i++) {
-        //        const element = fields[i];
         if (fields[i] == 'circle') {
             document.getElementById('circle_' + i).classList.remove('d-none');
         }
