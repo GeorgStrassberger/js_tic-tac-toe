@@ -1,16 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#gameframe {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 table {
     border-collapse: collapse;
 }
 
-tr {
+table tr {
     width: 399px;
 }
 
-td {
+table td {
     position: relative;
     height: 133px;
     width: 133px;
     border: 5px solid black;
+    cursor: pointer;
+}
+
+table td:hover {
+    background-color: rgba(245, 245, 245, 0.8);
 }
 
 table tr:first-child td {
@@ -31,12 +49,16 @@ table tr td:last-child {
 
 .shape {
     position: absolute;
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
 }
 
 .imgframe {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.d-none {
+    display: none;
 }
