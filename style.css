@@ -10,6 +10,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: wheat;
 }
 
 table {
@@ -29,7 +30,8 @@ table td {
 }
 
 table td:hover {
-    background-color: rgba(245, 245, 245, 0.8);
+    background-color: rgba(245, 245, 245, 0.4);
+    border-radius: 48px;
 }
 
 table tr:first-child td {
@@ -64,6 +66,10 @@ table tr td:last-child {
     display: none;
 }
 
+.o-none {
+    opacity: 0;
+}
+
 .players img {
     height: 40px;
     width: 40px;
@@ -86,6 +92,26 @@ table tr td:last-child {
     margin: 32px;
 }
 
-.inavtive {
+.inactive {
     opacity: 0.3;
+}
+
+.line {
+    height: 10px;
+    width: 350px;
+    background-color: rgba(255, 0, 0, 0.5);
+    position: absolute;
+    z-index: 1;
+    top: 445px;
+    transform: scaleX(0.0);
+    transition: transform 225ms ease-in-out;
+}
+
+.vertical {
+    transform: rotate(90deg) scaleX(0.0);
+}
+
+.aslant {
+    top: 585px;
+    left: 390px;
 }
