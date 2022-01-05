@@ -3,35 +3,88 @@
     padding: 0;
 }
 
-#gameframe {
-    width: 100vw;
+header {
+    position: absolute;
+    text-align: center;
+    top: 0;
+    background-color: gray;
+    color: white;
+    width: 100%;
+    font-family: 'PT Serif', serif;
+}
+
+body {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: whitesmoke;
+}
+
+.main-frame {
+    font-family: 'PT Serif', serif;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     flex-direction: column;
-    background-color: wheat;
+    height: 800px;
+    width: 500px;
+    border: 2px solid lightgrey;
+    background-color: gray;
+    border-radius: 8px;
+    color: black;
+    font-weight: 600;
+}
+
+.game-frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px;
+    height: 400px;
+    width: 400px;
+    border-radius: 8px;
+    border: solid 1px gray;
+    background-color: rgb(187, 221, 119);
+}
+
+.game-frame img {
+    height: 100%;
+    width: 100%;
+}
+
+.player-frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 400px;
+    height: 200px;
+}
+
+.btn-frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 120px;
 }
 
 table {
     border-collapse: collapse;
 }
 
-table tr {
-    width: 399px;
-}
-
 table td {
     position: relative;
-    height: 133px;
-    width: 133px;
+    height: 100px;
+    width: 100px;
     border: 5px solid black;
     cursor: pointer;
 }
 
 table td:hover {
     background-color: rgba(245, 245, 245, 0.4);
-    border-radius: 48px;
+    border-radius: 32px;
 }
 
 table tr:first-child td {
@@ -52,8 +105,7 @@ table tr td:last-child {
 
 .shape {
     position: absolute;
-    width: 100px;
-    height: 100px;
+    padding: 8px;
 }
 
 .imgframe {
@@ -89,7 +141,41 @@ table tr td:last-child {
 }
 
 .players {
-    margin: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.player {
+    margin: 8px;
+}
+
+.player input {
+    margin: 8px;
+    border-radius: 4px;
+    padding-left: 8px;
+}
+
+.player-win {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.player-select {
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.player-win img {
+    height: 50px;
+    width: 50px;
 }
 
 .inactive {

@@ -1,6 +1,9 @@
 let fields = [];
 let gameOver = false;
 let currentShape = `circle`;
+let winner;
+let name1;
+let name2;
 
 
 function fillShape(id) {
@@ -37,51 +40,184 @@ function draw() { // zeigt auf allen feldern die angeclickt worden sind, das ent
     }
 }
 
+
+
 function checkForWin() { // Ermittelt 3 gleiche Zeichen in Reihe für den Gewinner.
-    let winner;
-    // Horizontal - horizontal
-    // Entschricht der Wert (Cross oder Circle) auf POS 0 dem selben wie auf POS 1 UND POS 1 entspricht dem Wert der POS 2. UND ['string'] in POS 0 ist der Gewinner.
+    winHorizontal();
+    winVertical()
+    winAslant()
+
+    if (winner) { // wenn duie Variable winner belegt wird aus einer der Abfragen wird die bedingung TRUE (WAHR) und somit in der console ausgeben.
+        gameOver = true;
+        console.log('Gewonnen hat: ' + winner);
+        chanceFrameToWinner();
+        if (winner == 'cross') {
+            document.getElementById('win-name').innerHTML = name1;
+            document.getElementById('win-cross').classList.remove('d-none');
+            console.log('Gewonnen hat: ' + name1);
+
+        } else {
+            document.getElementById('win-name').innerHTML = name2;
+            document.getElementById('win-circle').classList.remove('d-none');
+            console.log('Gewonnen hat: ' + name2);
+        }
+    }
+}
+
+function chanceFrameToWinner() {
+    document.getElementById('players').classList.add('d-none');
+    document.getElementById('player-win').classList.remove('d-none');
+}
+
+function winHorizontal() {
+    winHorizontelTop();
+    winHorizontelMid();
+    winHorizontelBot();
+}
+
+function winHorizontelTop() {
     if (fields[0] == fields[1] && fields[1] == fields[2] && fields[0]) {
         // Var winner wird der Wert aus dem Array Pos 0 zugewissen. ('Cross' oder 'Circle')
         winner = fields[0];
-        document.getElementById('line_0').style.transform = 'scaleX(1.1)';
+        //       document.getElementById('line_0').style.transform = 'scaleX(1.1)';
+        document.getElementById(winner + '_0_red').classList.remove('d-none');
+        document.getElementById(winner + '_1_red').classList.remove('d-none');
+        document.getElementById(winner + '_2_red').classList.remove('d-none');
     }
+}
+
+function winHorizontelMid() {
     if (fields[3] == fields[4] && fields[4] == fields[5] && fields[3]) {
         winner = fields[3];
-        document.getElementById('line_1').style.transform = 'scaleX(1.1)';
+        //        document.getElementById('line_1').style.transform = 'scaleX(1.1)';
+        document.getElementById(winner + '_3_red').classList.remove('d-none');
+        document.getElementById(winner + '_4_red').classList.remove('d-none');
+        document.getElementById(winner + '_5_red').classList.remove('d-none');
     }
+}
+
+function winHorizontelBot() {
     if (fields[6] == fields[7] && fields[7] == fields[8] && fields[6]) {
         winner = fields[6];
-        document.getElementById('line_2').style.transform = 'scaleX(1.1)';
+        //        document.getElementById('line_2').style.transform = 'scaleX(1.1)';
+        document.getElementById(winner + '_6_red').classList.remove('d-none');
+        document.getElementById(winner + '_7_red').classList.remove('d-none');
+        document.getElementById(winner + '_8_red').classList.remove('d-none');
     }
-    //Vertikal - vertical
+}
+//Vertikal - vertical
+function winVertical() {
+    winVerticalLeft();
+    winVerticalMid();
+    winVerticalRight()
+}
+
+function winVerticalLeft() {
     if (fields[0] == fields[3] && fields[3] == fields[6] && fields[0]) {
         winner = fields[0];
-        document.getElementById('line_3').style.transform = 'scaleX(1.1) rotate(90deg)';
+        //        document.getElementById('line_3').style.transform = 'scaleX(1.1) rotate(90deg)';
+        document.getElementById(winner + '_0_red').classList.remove('d-none');
+        document.getElementById(winner + '_3_red').classList.remove('d-none');
+        document.getElementById(winner + '_6_red').classList.remove('d-none');
     }
+}
+
+function winVerticalMid() {
     if (fields[1] == fields[4] && fields[4] == fields[7] && fields[1]) {
         winner = fields[1];
-        document.getElementById('line_4').style.transform = 'scaleX(1.1) rotate(90deg)';
+        //        document.getElementById('line_4').style.transform = 'scaleX(1.1) rotate(90deg)';
+        document.getElementById(winner + '_1_red').classList.remove('d-none');
+        document.getElementById(winner + '_4_red').classList.remove('d-none');
+        document.getElementById(winner + '_7_red').classList.remove('d-none');
     }
+}
+
+function winVerticalRight() {
     if (fields[2] == fields[5] && fields[5] == fields[8] && fields[2]) {
         winner = fields[2];
-        document.getElementById('line_5').style.transform = 'scaleX(1.1) rotate(90deg)';
+        //        document.getElementById('line_5').style.transform = 'scaleX(1.1) rotate(90deg)';
+        document.getElementById(winner + '_2_red').classList.remove('d-none');
+        document.getElementById(winner + '_5_red').classList.remove('d-none');
+        document.getElementById(winner + '_8_red').classList.remove('d-none');
     }
-    //Quer - ASLANT
+}
+//Quer - ASLANT
+function winAslant() {
+    winAslantPlus();
+    winAslantMinus();
+}
+
+function winAslantPlus() {
     if (fields[0] == fields[4] && fields[4] == fields[8] && fields[0]) {
         winner = fields[0];
-        document.getElementById('line_6').style.transform = 'rotate(45deg) scaleX(1.5)';
+        //        document.getElementById('line_6').style.transform = 'rotate(45deg) scaleX(1.5)';
+        document.getElementById(winner + '_0_red').classList.remove('d-none');
+        document.getElementById(winner + '_4_red').classList.remove('d-none');
+        document.getElementById(winner + '_8_red').classList.remove('d-none');
     }
+}
+
+function winAslantMinus() {
     if (fields[2] == fields[4] && fields[4] == fields[6] && fields[2]) {
         winner = fields[2];
-        document.getElementById('line_7').style.transform = 'rotate(-45deg) scaleX(1.5)';
+        //        document.getElementById('line_7').style.transform = 'rotate(-45deg) scaleX(1.5)';
+        document.getElementById(winner + '_2_red').classList.remove('d-none');
+        document.getElementById(winner + '_4_red').classList.remove('d-none');
+        document.getElementById(winner + '_6_red').classList.remove('d-none');
     }
-    if (winner) { // wenn duie Variable winner belegt wird aus einer der Abfragen wird die bedingung TRUE (WAHR) und somit in der console ausgeben.
-        console.log('GEWONNEN', winner);
-        gameOver = true;
+}
+
+
+function restart() {
+    gameOver = false;
+    for (let i = 0; i < 9; i++) {
+        document.getElementById('circle_' + i).classList.add('d-none');
+        document.getElementById('cross_' + i).classList.add('d-none');
     }
+    window.open('select.html');
+    window.close('game.html');
+}
+
+function openSelectMenu() {
+    window.open('select.html'); // oder mit einem Link 
+    window.close('menu.html');
+}
+
+function selectName() {
+    name1 = document.getElementById('player_1').value;
+    name2 = document.getElementById('player_2').value;
+
+    localStorage.setItem('nameEINS', name1);
+    localStorage.setItem('nameZWEI', name2);
+}
+
+function loadName() {
+    name1 = localStorage.getItem('nameEINS');
+    name2 = localStorage.getItem('nameZWEI');
+    document.getElementById('player-one').innerHTML = `${name1}:`;
+    document.getElementById('player-two').innerHTML = `${name2}:`;
+
+}
+
+function quitGame() {
+    window.close('select.html');
+    window.close('menu.html');
+    window.close('game.html');
+}
+
+function startGame() {
+    selectName();
+    window.open('game.html');
+    window.close('select.html');
+}
+
+function writeName() {
+    document.getElementById('player-one').innerHTML = player1;
+    document.getElementById('player-two').innerHTML = player2;
 }
 // Balken einfügen
 // Sieger Sound einfügen
 // Player namen eingeben -> inputfeld
 // Sieger farbe ändern auf rot
+
+// Local SAVE / LOAD
