@@ -175,7 +175,7 @@ function restart() {
         document.getElementById('cross_' + i).classList.add('d-none');
     }
     window.open('/html/select.html');
-    window.close('/game.html');
+    window.close('/html/game.html');
 }
 
 function openSelectMenu() {
@@ -215,9 +215,3 @@ function writeName() {
     document.getElementById('player-one').innerHTML = player1;
     document.getElementById('player-two').innerHTML = player2;
 }
-// Balken einfügen
-// Sieger Sound einfügen
-// Player namen eingeben -> inputfeld
-// Sieger farbe ändern auf rot
-
-// Local SAVE / LOAD
