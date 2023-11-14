@@ -174,13 +174,13 @@ function restart() {
         document.getElementById('circle_' + i).classList.add('d-none');
         document.getElementById('cross_' + i).classList.add('d-none');
     }
-    window.open('select.html');
-    window.close('game.html');
+    window.open('/html/select.html');
+    window.close('/game.html');
 }
 
 function openSelectMenu() {
-    window.open('select.html'); // oder mit einem Link 
-    window.close('menu.html');
+    window.open('/html/select.html'); // oder mit einem Link 
+    window.close('/index.html');
 }
 
 function selectName() {
@@ -200,15 +200,15 @@ function loadName() {
 }
 
 function quitGame() {
-    window.close('select.html');
-    window.close('menu.html');
-    window.close('game.html');
+    window.close('/html/select.html');
+    window.close('/index.html');
+    window.close('/html/game.html');
 }
 
 function startGame() {
     selectName();
-    window.open('game.html');
-    window.close('select.html');
+    window.open('/html/game.html');
+    window.close('/html/select.html');
 }
 
 function writeName() {
