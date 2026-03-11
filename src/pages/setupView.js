@@ -1,5 +1,11 @@
 import { escapeHtml } from '../utils/html.js';
 
+/**
+ * Renders the player setup view.
+ *
+ * @param {import('../app/state.js').AppState} state
+ * @returns {string}
+ */
 export function renderSetupView(state) {
   return `
     <section class="main-frame">

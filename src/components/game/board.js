@@ -1,5 +1,11 @@
 import { shapes } from '../../app/constants.js';
 
+/**
+ * Renders the tic-tac-toe board based on the current app state.
+ *
+ * @param {import('../../app/state.js').AppState} state
+ * @returns {string}
+ */
 export function renderGameBoard(state) {
   const cells = state.board
     .map((value, index) => {

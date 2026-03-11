@@ -1,3 +1,9 @@
+/**
+ * Wraps the active view with the shared page shell.
+ *
+ * @param {string} content
+ * @returns {string}
+ */
 export function renderAppShell(content) {
   return `
     <div class="shell">

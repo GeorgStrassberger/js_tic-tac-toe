@@ -1,6 +1,11 @@
 import { shapes, winningLines } from './constants.js';
 
-export function evaluateBoard(state) {
+/**
+ * Evaluates the current board and stores winner or draw state on the app state.
+ *
+ * @param {import('./state.js').AppState} state
+ */
+export function evaluateBoardState(state) {
   const winningLine = winningLines.find(([first, second, third]) => {
     return (
       state.board[first] &&
@@ -21,13 +26,19 @@ export function evaluateBoard(state) {
   }
 }
 
-export function selectCell(cellIndex, state) {
+/**
+ * Applies the current player's move to a board cell if the move is valid.
+ *
+ * @param {number} cellIndex
+ * @param {import('./state.js').AppState} state
+ */
+export function applyMoveToCell(cellIndex, state) {
   if (state.isGameOver || state.board[cellIndex]) {
     return;
   }
 
   state.board[cellIndex] = state.activeShape;
-  evaluateBoard(state);
+  evaluateBoardState(state);
 
   if (!state.isGameOver) {
     state.activeShape =
@@ -35,13 +46,25 @@ export function selectCell(cellIndex, state) {
   }
 }
 
-export function getCurrentPlayerName(state) {
+/**
+ * Returns the display name of the player whose turn it currently is.
+ *
+ * @param {import('./state.js').AppState} state
+ * @returns {string}
+ */
+export function getActivePlayerName(state) {
   return state.activeShape === shapes.cross
     ? state.players.first
     : state.players.second;
 }
 
-export function getWinnerName(state) {
+/**
+ * Returns the display name of the winner if a winner has been determined.
+ *
+ * @param {import('./state.js').AppState} state
+ * @returns {string}
+ */
+export function getWinningPlayerName(state) {
   if (state.winnerShape === shapes.cross) {
     return state.players.first;
   }
