@@ -5,12 +5,16 @@ import { escapeHtml } from '../../utils/html.js';
 export function renderGameStatus(state) {
   if (state.winnerShape) {
     return `
-      <div class="player-win">
+      <div class="player-win player-win--winner">
+        <span class="winner-label">Gewinner</span>
         <div class="winner-badge">
-          <span>${escapeHtml(getWinnerName(state))}</span>
-          <span class="shape shape--${state.winnerShape}">${state.winnerShape === shapes.cross ? 'X' : 'O'}</span>
+          <span class="winner-badge__shape shape shape--${state.winnerShape}">${state.winnerShape === shapes.cross ? 'X' : 'O'}</span>
+          <div class="winner-badge__content">
+            <span class="winner-badge__name">${escapeHtml(getWinnerName(state))}</span>
+            <span class="winner-badge__text">hat die Runde gewonnen</span>
+          </div>
         </div>
-        <span>WIN</span>
+        <span class="winner-title">WIN</span>
       </div>
     `;
   }
@@ -25,11 +29,11 @@ export function renderGameStatus(state) {
 
   return `
     <div class="players">
-      <div class="${state.activeShape === shapes.cross ? '' : 'inactive'}">
+      <div class="player-chip ${state.activeShape === shapes.cross ? '' : 'inactive'}">
         <span>${escapeHtml(state.players.first)}:</span>
         <span class="shape shape--cross">X</span>
       </div>
-      <div class="${state.activeShape === shapes.circle ? '' : 'inactive'}">
+      <div class="player-chip ${state.activeShape === shapes.circle ? '' : 'inactive'}">
         <span>${escapeHtml(state.players.second)}:</span>
         <span class="shape shape--circle">O</span>
       </div>
