@@ -1,12 +1,14 @@
 name: Deploy Staging
-run-name: ${{ github.actor }} is deploying to staging
+run-name: staging deploy for ${{ github.event.workflow_run.head_branch }}
 
 on:
-  pull_request:
+  workflow_run:
+    workflows:
+      - CI
     branches:
       - main
     types:
-      - closed
+      - completed
 
 permissions:
   contents: read
@@ -18,7 +20,9 @@ concurrency:
 jobs:
   deploy-staging:
     name: Deploy to staging
-    if: github.event.pull_request.merged == true
+    if: >
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push'
     runs-on: ubuntu-latest
     environment: staging
 
@@ -26,7 +30,7 @@ jobs:
       - name: Checkout merged main branch
         uses: actions/checkout@v6
         with:
-          ref: main
+          ref: ${{ github.event.workflow_run.head_sha }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v6

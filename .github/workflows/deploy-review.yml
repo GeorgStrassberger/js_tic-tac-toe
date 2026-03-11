@@ -1,31 +1,33 @@
 name: Deploy Review
-run-name: ${{ github.actor }} is deploying to review
+run-name: ${{ github.event.workflow_run.head_branch }} review deploy
 
 on:
-  pull_request:
-    branches:
-      - main
+  workflow_run:
+    workflows:
+      - CI
     types:
-      - opened
-      - synchronize
-      - reopened
+      - completed
 
 permissions:
   contents: read
 
 concurrency:
-  group: deploy-review-${{ github.event.pull_request.number }}
+  group: deploy-review-${{ github.event.workflow_run.head_branch }}
   cancel-in-progress: true
 
 jobs:
   deploy-review:
     name: Deploy review build
-    if: github.event.pull_request.head.repo.fork == false
+    if: >
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.head_repository.fork == false
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout pull request head
         uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v6

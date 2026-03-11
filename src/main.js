@@ -3,7 +3,11 @@ import './style.css';
 import { routes } from './app/constants.js';
 import { applyMoveToCell } from './app/game.js';
 import { navigateToRoute, syncRouteStateFromHash } from './app/router.js';
-import { createAppState, resetMatchState, persistPlayerNames } from './app/state.js';
+import {
+  createAppState,
+  resetMatchState,
+  persistPlayerNames,
+} from './app/state.js';
 import { renderAppShell } from './components/layout/appShell.js';
 import { renderGameView } from './pages/gameView.js';
 import { renderHomeView } from './pages/homeView.js';
