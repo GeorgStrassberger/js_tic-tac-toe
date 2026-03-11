@@ -1,3 +1,8 @@
+/**
+ * Renders the landing view of the app.
+ *
+ * @returns {string}
+ */
 export function renderHomeView() {
   return `
     <section class="main-frame main-frame--home">

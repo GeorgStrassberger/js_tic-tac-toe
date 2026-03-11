@@ -1,6 +1,12 @@
 import { renderGameBoard } from '../components/game/board.js';
 import { renderGameStatus } from '../components/game/status.js';
 
+/**
+ * Renders the active game view.
+ *
+ * @param {import('../app/state.js').AppState} state
+ * @returns {string}
+ */
 export function renderGameView(state) {
   return `
     <section class="main-frame main-frame--game">
